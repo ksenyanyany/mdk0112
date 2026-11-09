@@ -1,0 +1,173 @@
+[gd_scene format=3 uid="uid://mt768kls3hj"]
+
+[ext_resource type="Script" uid="uid://b4pxaacuaoxkp" path="res://level.gd" id="1_level"]
+[ext_resource type="PackedScene" path="res://player.tscn" id="2_player"]
+[ext_resource type="PackedScene" path="res://coin.tscn" id="3_coin"]
+[ext_resource type="PackedScene" path="res://spikes.tscn" id="4_spikes"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(1152, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1"]
+size = Vector2(200, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2"]
+size = Vector2(200, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3"]
+size = Vector2(200, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_moving"]
+size = Vector2(120, 20)
+
+[sub_resource type="Animation" id="Animation_reset"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1080, 560)]
+}
+
+[sub_resource type="Animation" id="Animation_move"]
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(1080, 560), Vector2(1080, 260), Vector2(1080, 560)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_moving"]
+_data = {
+&"RESET": SubResource("Animation_reset"),
+&"move": SubResource("Animation_move")
+}
+
+[node name="Level" type="Node2D" unique_id=608177028]
+script = ExtResource("1_level")
+
+[node name="Background" type="ColorRect" parent="." unique_id=2142013270]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.53, 0.75, 0.92, 1)
+
+[node name="Player" parent="." unique_id=98638479 instance=ExtResource("2_player")]
+position = Vector2(150, 540)
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=509445161]
+position = Vector2(576, 620)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=675332552]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="ColorRect" type="ColorRect" parent="Floor" unique_id=839782790]
+offset_left = -576.0
+offset_top = -20.0
+offset_right = 576.0
+offset_bottom = 20.0
+color = Color(0.35, 0.22, 0.12, 1)
+
+[node name="Platform1" type="StaticBody2D" parent="." unique_id=245750661]
+position = Vector2(300, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1" unique_id=113988432]
+shape = SubResource("RectangleShape2D_p1")
+
+[node name="ColorRect" type="ColorRect" parent="Platform1" unique_id=37569472]
+offset_left = -100.0
+offset_top = -10.0
+offset_right = 100.0
+offset_bottom = 10.0
+color = Color(0.25, 0.6, 0.25, 1)
+
+[node name="Platform2" type="StaticBody2D" parent="." unique_id=1029172844]
+position = Vector2(600, 400)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2" unique_id=1406357060]
+shape = SubResource("RectangleShape2D_p2")
+
+[node name="ColorRect" type="ColorRect" parent="Platform2" unique_id=851091034]
+offset_left = -100.0
+offset_top = -10.0
+offset_right = 100.0
+offset_bottom = 10.0
+color = Color(0.25, 0.6, 0.25, 1)
+
+[node name="Platform3" type="StaticBody2D" parent="." unique_id=1372108175]
+position = Vector2(872, 459)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3" unique_id=1059058941]
+shape = SubResource("RectangleShape2D_p3")
+
+[node name="ColorRect" type="ColorRect" parent="Platform3" unique_id=1907255271]
+offset_left = -100.0
+offset_top = -10.0
+offset_right = 100.0
+offset_bottom = 10.0
+color = Color(0.25, 0.6, 0.25, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="MovingPlatform" type="AnimatableBody2D" parent="." unique_id=1138264944]
+position = Vector2(1080, 560)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform" unique_id=147021915]
+shape = SubResource("RectangleShape2D_moving")
+
+[node name="ColorRect" type="ColorRect" parent="MovingPlatform" unique_id=1603151363]
+offset_left = -60.0
+offset_top = -10.0
+offset_right = 60.0
+offset_bottom = 10.0
+color = Color(0.55, 0.3, 0.7, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MovingPlatform" unique_id=914683883]
+libraries/ = SubResource("AnimationLibrary_moving")
+autoplay = &"move"
+
+[node name="Coin1" parent="." unique_id=517058080 instance=ExtResource("3_coin")]
+position = Vector2(450, 570)
+
+[node name="Coin2" parent="." unique_id=339029101 instance=ExtResource("3_coin")]
+position = Vector2(300, 450)
+
+[node name="Coin3" parent="." unique_id=1592663383 instance=ExtResource("3_coin")]
+position = Vector2(600, 350)
+
+[node name="Coin4" parent="." unique_id=1218826963 instance=ExtResource("3_coin")]
+position = Vector2(872, 409)
+
+[node name="Coin5" parent="." unique_id=1429283295 instance=ExtResource("3_coin")]
+position = Vector2(1080, 190)
+
+[node name="Spikes1" parent="." unique_id=567884364 instance=ExtResource("4_spikes")]
+position = Vector2(380, 584)
+
+[node name="Spikes2" parent="." unique_id=169977675 instance=ExtResource("4_spikes")]
+position = Vector2(760, 584)
+
+[node name="Spikes3" parent="." unique_id=1567608766 instance=ExtResource("4_spikes")]
+position = Vector2(960, 584)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=189137323]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=584755372]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 260.0
+offset_bottom = 65.0
+theme_override_font_sizes/font_size = 32
+text = "Монеты: 0"

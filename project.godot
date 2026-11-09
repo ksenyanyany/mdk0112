@@ -1,0 +1,12 @@
+config_version=5
+
+[application]
+
+config/name="Coins"
+run/main_scene="res://level.tscn"
+config/features=PackedStringArray("4.7", "Forward Plus")
+config/icon="res://icon.svg"
+
+[global_group]
+
+Player=""

@@ -1,0 +1,11 @@
+78098b89c88a74ebe8c20117b8754620
+::res://::1791895024
+coin.gd::GDScript::5532604023881073375::1791894911::0::1::::<>Area2D<><>0<>0<><>::
+coin.tscn::PackedScene::-1::1791894911::0::1::::<><><>0<>0<><>::res://coin.gd<>res://icon.svg
+icon.svg::CompressedTexture2D::1007376966760939248::1791894909::1791895026::1::::<><><>0<>0<>4cc808de9a6abbbccb541307f5e1a852<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+level.gd::GDScript::4454259310339460015::1791894913::0::1::::<>Node2D<><>0<>0<><>::
+level.tscn::PackedScene::-1::1791894913::0::1::::<><><>0<>0<><>::res://level.gd<>res://player.tscn<>res://coin.tscn<>res://spikes.tscn
+player.gd::GDScript::246193453334168455::1791894909::0::1::::<>CharacterBody2D<><>0<>0<><>::
+player.tscn::PackedScene::-1::1791894910::0::1::::<><><>0<>0<><>::res://player.gd<>res://icon.svg
+spikes.gd::GDScript::4989461426873212889::1791894912::0::1::::<>Area2D<><>0<>0<><>::
+spikes.tscn::PackedScene::-1::1791894912::0::1::::<><><>0<>0<><>::res://spikes.gd<>res://icon.svg
